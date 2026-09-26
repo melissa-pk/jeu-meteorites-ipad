@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"> <div class="control">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -63,6 +63,16 @@
             <input id="imageMode" type="checkbox">
             <span class="toggle-slider"></span>
           </label>
+        </div>
+       <div class="control">
+          <label>Coller une liste de mots</label>
+          <div style="display:flex;gap:8px;margin-bottom:8px">
+            <select id="pasteLangLeft"></select>
+            <span style="align-self:center">→</span>
+            <select id="pasteLangRight"></select>
+          </div>
+          <textarea id="pasteWordsText" rows="4" placeholder="Moon : lune&#10;Sun : soleil" style="width:100%;padding:10px;border-radius:10px;border:1px solid #ade8ff52;background:#0d2035;color:var(--ink);font-family:'Space Grotesk',sans-serif;resize:vertical"></textarea>
+          <button id="pasteWordsBtn" style="margin-top:8px">Charger ce texte</button>
         </div>
         <div class="control">
           <label>Charger une liste de mots</label>

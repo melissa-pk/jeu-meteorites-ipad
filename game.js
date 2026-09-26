@@ -780,7 +780,52 @@ ctx.restore();
       console.log('Using embedded words list', words.length, 'words');
     }
   });
+  // --- Coller un texte de mots directement (alternative au fichier JSON) ---
+  const pasteLangLeft = document.getElementById('pasteLangLeft');
+  const pasteLangRight = document.getElementById('pasteLangRight');
+  const pasteWordsText = document.getElementById('pasteWordsText');
+  const pasteWordsBtn = document.getElementById('pasteWordsBtn');
 
+  if(pasteLangLeft && pasteLangRight){
+    Object.entries(LANG_NAMES).forEach(([code, name])=>{
+      const opt1 = document.createElement('option');
+      opt1.value = code; opt1.textContent = name;
+      pasteLangLeft.appendChild(opt1);
+      const opt2 = document.createElement('option');
+      opt2.value = code; opt2.textContent = name;
+      pasteLangRight.appendChild(opt2);
+    });
+    pasteLangLeft.value = 'en';
+    pasteLangRight.value = 'fr';
+  }
+
+  if(pasteWordsBtn){
+    pasteWordsBtn.addEventListener('click', ()=>{
+      const raw = pasteWordsText.value;
+      const codeLeft = pasteLangLeft.value;
+      const codeRight = pasteLangRight.value;
+      const lines = raw.split('\n');
+      const parsed = [];
+      for(const line of lines){
+        if(!line.trim()) continue;
+        const idx = line.indexOf(':');
+        if(idx === -1) continue; // ligne sans ":" ignorée
+        const left = line.slice(0, idx).trim();
+        const right = line.slice(idx + 1).trim();
+        if(!left || !right) continue;
+        parsed.push({ [codeLeft]: left, [codeRight]: right });
+      }
+      if(parsed.length === 0){
+        alert('Aucune ligne valide trouvée. Utilise le format "mot : traduction", une paire par ligne.');
+        return;
+      }
+      words = parsed;
+      detectAndPopulateLangs(words);
+      if(imageMode){ for(const w of words) preloadWordImage(w); }
+      if(gameMode === 'final-boss') bossQueue = shuffle(words.slice());
+      alert('Liste chargée : ' + parsed.length + ' mots');
+    });
+  }
   // load words from file input
   const loadWordsBtn = document.getElementById('loadWordsBtn');
   const loadWordsFile = document.getElementById('loadWordsFile');
