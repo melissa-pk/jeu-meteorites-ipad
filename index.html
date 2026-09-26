@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Météorites">
+<meta name="theme-color" content="#0b0c1a">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <title>Météorites - Traduction</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="ui">
+    <div id="info">
+      <span id="score">Score: 0</span>
+      <span id="lives">Vies: 3</span>
+    </div>
+  </div>
+
+  <div id="game-bottom">
+    <div id="accent-bubble" class="accent-bubble"></div>
+    <input id="input" placeholder="Tapez la traduction..." autocomplete="off" autofocus>
+    <button id="restart-bottom">Recommencer</button>
+  </div>
+  
+
+  <!-- Centered settings menu (shown at start and after Restart) -->
+  <div id="menu" class="menu">
+    <div class="panel">
+      <h2>Réglages</h2>
+      <div id="controls">
+        <div class="control">
+          <label for="sliderLives">Vies: <span id="valLives">3</span></label>
+          <input id="sliderLives" type="range" min="1" max="10" value="3">
+        </div>
+        <div class="control">
+          <label for="sliderSpeed">Vitesse de chute: <span id="valSpeed">1.0×</span></label>
+          <input id="sliderSpeed" type="range" min="0.05" max="3" step="0.05" value="1">
+        </div>
+        <div class="control">
+          <label for="sliderSpawn">Vitesse d'apparition: <span id="valSpawn">4.0s</span></label>
+          <!-- Increased max to 20000ms (20s) and default to 4000ms -->
+          <input id="sliderSpawn" type="range" min="400" max="20000" step="100" value="4000">
+        </div>
+        <div class="control">
+          <label for="dirMode">Mode de traduction</label>
+          <select id="dirMode">
+            <!-- options populated dynamically from word data -->
+          </select>
+        </div>
+        <div class="control">
+          <label for="gameMode">Mode de jeu</label>
+          <select id="gameMode">
+            <option value="normal">Normal</option>
+            <option value="final-boss">Final Boss</option>
+          </select>
+        </div>
+        <div class="control" style="flex-direction:row;align-items:center;justify-content:space-between">
+          <label for="imageMode" style="margin:0">Mode Image</label>
+          <label class="toggle-switch">
+            <input id="imageMode" type="checkbox">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control">
+          <label>Charger une liste de mots</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button id="loadWordsBtn">Charger un fichier JSON</button>
+            <input id="loadWordsFile" type="file" accept="application/json" style="display:none">
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:12px">
+        <button id="start">Start</button>
+      </div>
+    </div>
+  </div>
+  <canvas id="gameCanvas"></canvas>
+  <script src="game.js"></script>
+</body>
+</html>

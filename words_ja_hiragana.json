@@ -1,0 +1,17 @@
+[
+  {"ja":"こんにちは","en":"hello"},
+  {"ja":"ありがとう","en":"thank you"},
+  {"ja":"さようなら","en":"goodbye"},
+  {"ja":"おはよう","en":"good morning"},
+  {"ja":"すみません","en":"excuse me"},
+  {"ja":"おいしい","en":"delicious"},
+  {"ja":"かわいい","en":"cute"},
+  {"ja":"たのしい","en":"fun"},
+  {"ja":"むずかしい","en":"difficult"},
+  {"ja":"やさしい","en":"easy"},
+  {"ja":"あたらしい","en":"new"},
+  {"ja":"ふるい","en":"old"},
+  {"ja":"おおきい","en":"big"},
+  {"ja":"ちいさい","en":"small"},
+  {"ja":"はやい","en":"fast"}
+]
